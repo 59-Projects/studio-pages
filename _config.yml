@@ -12,7 +12,9 @@ exclude:
   - Gemfile.lock
   - package.json
   - package-lock.json
+  - yarn.lock
   - node_modules
   - tailwind.config.js
   - postcss.config.js
   - src
+  - .ruby-version

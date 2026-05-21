@@ -4,7 +4,8 @@
   "scripts": {
     "build:css": "tailwindcss -i ./src/tailwind.css -o ./assets/css/site.css --minify",
     "watch:css": "tailwindcss -i ./src/tailwind.css -o ./assets/css/site.css --watch",
-    "dev": "concurrently -k \"npm run watch:css\" \"bundle exec jekyll serve --livereload --host 127.0.0.1\""
+    "jekyll:serve": "bundle exec jekyll serve --livereload --host 127.0.0.1",
+    "dev": "yarn build:css && concurrently -k -n tailwind,jekyll -c cyan,magenta \"yarn run watch:css\" \"yarn run jekyll:serve\""
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.15",

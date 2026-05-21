@@ -24,14 +24,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: npm
-          cache-dependency-path: package-lock.json
-      - name: Install npm dependencies and build CSS
-        run: npm ci && npm run build:css
+          cache: yarn
+          cache-dependency-path: yarn.lock
+      - name: Install Yarn dependencies and build CSS
+        run: yarn install --frozen-lockfile && yarn run build:css
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3"
+          ruby-version-file: .ruby-version
           bundler-cache: true
       - name: Build site
         run: bundle exec jekyll build --destination "${GITHUB_WORKSPACE}/_site"
