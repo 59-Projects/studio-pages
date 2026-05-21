@@ -53,21 +53,23 @@ With `url` and `baseurl` in `_config.yml` matching production, you do not need a
 
 If you ever need to mirror the fallback `*.github.io` host before DNS is live, you can temporarily set `baseurl` in `_config.yml` to match that host’s path prefix, then restore it for `studio.59projects.com`.
 
-## Download link (what you share with users)
+## Download links (what you share with users)
 
-Visitors use the **Download** control in the site header and on the home page. Both read **`download_page_url`** from **`_config.yml`**. The optional **`studio_repo_url`** powers the secondary “Source on GitHub” button.
+Primary **Download Mac app** buttons use **`download_mac_url`** in **`_config.yml`**. Defaults to GitHub’s direct file URL shape:
 
-**Easiest workflow:** set `download_page_url` to GitHub’s latest-release URL (already the default):
-
-```yaml
-download_page_url: "https://github.com/59-Projects/studio/releases/latest"
+```text
+https://github.com/OWNER/REPO/releases/latest/download/Studio-mac.dmg
 ```
 
-Ship each version by creating a **Release** on [**59-Projects/studio**](https://github.com/59-Projects/studio) and attaching the **Mac** build (today the app ships for macOS only; update this page and `electron-builder` when you add Windows). The `/releases/latest` URL always opens the newest release, so you usually **do not** redeploy **studio-pages** when you only bump the app version.
+GitHub serves that URL when the **latest** release attaches a file named **`Studio-mac.dmg`** exactly (case sensitive). The Studio app repo uses **`build.mac.artifactName`**: **`Studio-mac.${ext}`** so `npm run dist` produces **`Studio-mac.dmg`**; upload it to each release and you normally **do not** redeploy **studio-pages** for version bumps alone.
 
-To point people at a **single direct file** (for example one universal link), change `download_page_url` to that HTTPS URL and redeploy this site once.
+**`releases_page_url`** powers the secondary **All releases** link.
 
-**`latest.json`** (for the in-app update banner) should track semver and a sensible `url` for “get the update” (often the same latest-release link or a specific tag). See [**Studio `docs/RELEASES.md`**](https://github.com/59-Projects/studio/blob/main/docs/RELEASES.md).
+**`studio_repo_url`** is optional for **Source on GitHub**.
+
+To host the installer elsewhere, set **`download_mac_url`** to any HTTPS URL that returns the file.
+
+**`latest.json`** (in-app update banner) is separate from the site buttons; see [**Studio `docs/RELEASES.md`**](https://github.com/59-Projects/studio/blob/main/docs/RELEASES.md).
 
 ## Tailwind workflow
 
@@ -79,7 +81,7 @@ Use Tailwind utility classes in `_layouts/default.html` (and any future includes
 
 ## Files
 
-- `_config.yml` — site metadata, `download_page_url` / `studio_repo_url` for download buttons, Jekyll `exclude` for tooling
+- `_config.yml` — site metadata, **`download_mac_url`**, **`releases_page_url`**, **`studio_repo_url`**, Jekyll `exclude`
 - `Gemfile` — Jekyll 4 (CI uses the same `Gemfile.lock` as local preview)
 - `package.json` — Tailwind, PostCSS, Typography plugin; scripts including **`yarn dev`**
 - `yarn.lock` — lockfile for Yarn (commit this; CI uses `yarn install --frozen-lockfile`)

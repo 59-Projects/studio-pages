@@ -6,9 +6,12 @@ baseurl: ""
 markdown: kramdown
 permalink: pretty
 
-# Download: GitHub’s /releases/latest URL always opens the newest release (installers
-# attached there). Change this only if you mirror downloads elsewhere.
-download_page_url: "https://github.com/59-Projects/studio/releases/latest"
+# Direct Mac download: GitHub serves the file when the latest release contains an asset
+# with this exact filename (see Studio package.json build.mac.artifactName).
+download_mac_url: "https://github.com/59-Projects/studio/releases/latest/download/Studio-mac.dmg"
+
+# Releases page for version history and changelog (optional link). Source repo for code.
+releases_page_url: "https://github.com/59-Projects/studio/releases/latest"
 studio_repo_url: "https://github.com/59-Projects/studio"
 
 exclude:
