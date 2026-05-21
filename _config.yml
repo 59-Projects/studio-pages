@@ -6,6 +6,11 @@ baseurl: ""
 markdown: kramdown
 permalink: pretty
 
+# Download: GitHub’s /releases/latest URL always opens the newest release (installers
+# attached there). Change this only if you mirror downloads elsewhere.
+download_page_url: "https://github.com/59-Projects/studio/releases/latest"
+studio_repo_url: "https://github.com/59-Projects/studio"
+
 exclude:
   - README.md
   - Gemfile

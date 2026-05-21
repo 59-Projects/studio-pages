@@ -9,8 +9,11 @@
 </head>
 <body class="flex min-h-full flex-col bg-stone-50 text-stone-900 antialiased">
   <header class="sticky top-0 z-10 border-b border-stone-200/80 bg-white/90 shadow-sm backdrop-blur">
-    <div class="mx-auto flex max-w-3xl items-center justify-between px-4 py-4 sm:px-6">
+    <div class="mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
       <a class="text-lg font-semibold tracking-tight text-stone-900 transition-colors hover:text-indigo-600" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      {% if site.download_page_url %}
+      <a href="{{ site.download_page_url }}" class="inline-flex shrink-0 items-center justify-center rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" rel="noopener noreferrer" target="_blank">Download</a>
+      {% endif %}
     </div>
   </header>
   <main class="mx-auto w-full max-w-3xl flex-1 px-4 py-10 sm:px-6">

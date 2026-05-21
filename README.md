@@ -53,6 +53,22 @@ With `url` and `baseurl` in `_config.yml` matching production, you do not need a
 
 If you ever need to mirror the fallback `*.github.io` host before DNS is live, you can temporarily set `baseurl` in `_config.yml` to match that host’s path prefix, then restore it for `studio.59projects.com`.
 
+## Download link (what you share with users)
+
+Visitors use the **Download** control in the site header and on the home page. Both read **`download_page_url`** from **`_config.yml`**. The optional **`studio_repo_url`** powers the secondary “Source on GitHub” button.
+
+**Easiest workflow:** set `download_page_url` to GitHub’s latest-release URL (already the default):
+
+```yaml
+download_page_url: "https://github.com/59-Projects/studio/releases/latest"
+```
+
+Ship each version by creating a **Release** on [**59-Projects/studio**](https://github.com/59-Projects/studio) and attaching the **Mac** build (today the app ships for macOS only; update this page and `electron-builder` when you add Windows). The `/releases/latest` URL always opens the newest release, so you usually **do not** redeploy **studio-pages** when you only bump the app version.
+
+To point people at a **single direct file** (for example one universal link), change `download_page_url` to that HTTPS URL and redeploy this site once.
+
+**`latest.json`** (for the in-app update banner) should track semver and a sensible `url` for “get the update” (often the same latest-release link or a specific tag). See [**Studio `docs/RELEASES.md`**](https://github.com/59-Projects/studio/blob/main/docs/RELEASES.md).
+
 ## Tailwind workflow
 
 - **Source:** `src/tailwind.css` (`@tailwind` layers only.)
@@ -63,7 +79,7 @@ Use Tailwind utility classes in `_layouts/default.html` (and any future includes
 
 ## Files
 
-- `_config.yml` — site title, description, `url`, `baseurl`, Jekyll `exclude` for Node and Tailwind sources
+- `_config.yml` — site metadata, `download_page_url` / `studio_repo_url` for download buttons, Jekyll `exclude` for tooling
 - `Gemfile` — Jekyll 4 (CI uses the same `Gemfile.lock` as local preview)
 - `package.json` — Tailwind, PostCSS, Typography plugin; scripts including **`yarn dev`**
 - `yarn.lock` — lockfile for Yarn (commit this; CI uses `yarn install --frozen-lockfile`)
