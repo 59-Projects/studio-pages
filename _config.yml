@@ -1,0 +1,18 @@
+title: Studio
+description: A space for process and learning, shared context for small teams
+url: "https://studio.59projects.com"
+baseurl: ""
+
+markdown: kramdown
+permalink: pretty
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - package.json
+  - package-lock.json
+  - node_modules
+  - tailwind.config.js
+  - postcss.config.js
+  - src
