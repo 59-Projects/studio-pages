@@ -55,21 +55,25 @@ If you ever need to mirror the fallback `*.github.io` host before DNS is live, y
 
 ## Download links (what you share with users)
 
-Primary **Download Mac app** buttons use **`download_mac_url`** in **`_config.yml`**. Defaults to GitHub’s direct file URL shape:
+Anonymous visitors need a **public** download URL. The Studio app repo is **private**, so Release assets **there are not anonymously downloadable**, which manifests as **404** on **`…/releases/latest/download/…`**.
+
+Defaults in **`_config.yml`** ship the **`Studio-mac.dmg`** link from **`59-Projects/studio-pages`** (that repo should stay **public**). Each public Release there must attach a file named **`Studio-mac.dmg`** exactly.
 
 ```text
-https://github.com/OWNER/REPO/releases/latest/download/Studio-mac.dmg
+https://github.com/59-Projects/studio-pages/releases/latest/download/Studio-mac.dmg
 ```
 
-GitHub serves that URL when the **latest** release attaches a file named **`Studio-mac.dmg`** exactly (case sensitive). The Studio app repo uses **`build.mac.artifactName`**: **`Studio-mac.${ext}`** so `npm run dist` produces **`Studio-mac.dmg`**; upload it to each release and you normally **do not** redeploy **studio-pages** for version bumps alone.
+The Studio repo uses **`build.mac.artifactName`**: **`Studio-mac.${ext}`** so **`npm run dist`** produces **`Studio-mac.dmg`**. Upload that file to **`studio-pages` Releases**.
 
-**`releases_page_url`** powers the secondary **All releases** link.
+**Until** at least one **public** **`studio-pages`** Release includes **`Studio-mac.dmg`, the Download button stays 404** for lack of asset.
 
-**`studio_repo_url`** is optional for **Source on GitHub**.
+**`releases_page_url`** points at **`studio-pages`** Releases listing.
 
-To host the installer elsewhere, set **`download_mac_url`** to any HTTPS URL that returns the file.
+**`studio_repo_url`** is optional (**Source on GitHub**).
 
-**`latest.json`** (in-app update banner) is separate from the site buttons; see [**Studio `docs/RELEASES.md`**](https://github.com/59-Projects/studio/blob/main/docs/RELEASES.md).
+To host elsewhere, set **`download_mac_url`** to any anonymous HTTPS URL that returns the installer.
+
+**`latest.json`** (in-app banner) should use the **same anonymous-friendly** **`url`**; see [**Studio `docs/RELEASES.md`**](https://github.com/59-Projects/studio/blob/main/docs/RELEASES.md).
 
 ## Tailwind workflow
 

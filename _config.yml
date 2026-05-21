@@ -6,12 +6,12 @@ baseurl: ""
 markdown: kramdown
 permalink: pretty
 
-# Direct Mac download: GitHub serves the file when the latest release contains an asset
-# with this exact filename (see Studio package.json build.mac.artifactName).
-download_mac_url: "https://github.com/59-Projects/studio/releases/latest/download/Studio-mac.dmg"
+# Direct Mac DMG URL. Installers MUST live on PUBLIC GitHub Releases: anonymous visitors
+# cannot download assets from Releases on private repos like 59-Projects/studio.
+# Attach Studio-mac.dmg to a Release here (usually same semver tag as the app).
+download_mac_url: "https://github.com/59-Projects/studio-pages/releases/latest/download/Studio-mac.dmg"
 
-# Releases page for version history and changelog (optional link). Source repo for code.
-releases_page_url: "https://github.com/59-Projects/studio/releases/latest"
+releases_page_url: "https://github.com/59-Projects/studio-pages/releases"
 studio_repo_url: "https://github.com/59-Projects/studio"
 
 exclude:
