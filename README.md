@@ -2,6 +2,8 @@
 
 This repository is the **Jekyll source** for the public Studio marketing site at **`https://studio.59projects.com`**, deployed with GitHub Actions to GitHub Pages ([**59-Projects/studio-pages**](https://github.com/59-Projects/studio-pages)).
 
+**Shipping a new Mac build:** follow **[`RELEASING.md`](./RELEASING.md)** (upload **`Studio-mac.dmg`** to Releases here, then bump **`latest.json`**). No automation required.
+
 The Electron app, maintainer docs, and update-feed behavior are documented in the main Studio repo: [**59-Projects/studio**](https://github.com/59-Projects/studio) (`docs/RELEASES.md`).
 
 Styling uses **Tailwind CSS** (utilities in `_layouts/` and compiled CSS in `assets/css/site.css`).
@@ -55,9 +57,7 @@ If you ever need to mirror the fallback `*.github.io` host before DNS is live, y
 
 ## Download links (what you share with users)
 
-Anonymous visitors need a **public** download URL. The Studio app repo is **private**, so Release assets **there are not anonymously downloadable**, which manifests as **404** on **`…/releases/latest/download/…`**.
-
-Defaults in **`_config.yml`** ship the **`Studio-mac.dmg`** link from **`59-Projects/studio-pages`** (that repo should stay **public**). Each public Release there must attach a file named **`Studio-mac.dmg`** exactly.
+See **[`RELEASING.md`](./RELEASING.md)** for the maintainer steps. In short: the public DMG must live on **this repo’s** Releases as **`Studio-mac.dmg`**.
 
 ```text
 https://github.com/59-Projects/studio-pages/releases/latest/download/Studio-mac.dmg
@@ -71,7 +71,7 @@ The Studio repo uses **`build.mac.artifactName`**: **`Studio-mac.${ext}`** so **
 
 **`studio_repo_url`** is optional (**Source on GitHub**).
 
-To host elsewhere, set **`download_mac_url`** to any anonymous HTTPS URL that returns the installer.
+To host elsewhere, set **`download_mac_url`** in **`_config.yml`** to any anonymous HTTPS URL that returns the installer.
 
 **`latest.json`** (in-app banner) should use the **same anonymous-friendly** **`url`**; see [**Studio `docs/RELEASES.md`**](https://github.com/59-Projects/studio/blob/main/docs/RELEASES.md).
 
@@ -85,6 +85,7 @@ Use Tailwind utility classes in `_layouts/default.html` (and any future includes
 
 ## Files
 
+- [`RELEASING.md`](./RELEASING.md) — **every release:** upload **`Studio-mac.dmg`** to Releases here, bump **`latest.json`**
 - `_config.yml` — site metadata, **`download_mac_url`**, **`releases_page_url`**, **`studio_repo_url`**, Jekyll `exclude`
 - `Gemfile` — Jekyll 4 (CI uses the same `Gemfile.lock` as local preview)
 - `package.json` — Tailwind, PostCSS, Typography plugin; scripts including **`yarn dev`**

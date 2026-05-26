@@ -1,5 +1,5 @@
 title: Studio
-description: A space for process and learning, shared context for small teams
+description: Project intelligence for small teams. A Mac app that gives everyone on your team a shared, AI-aware workspace built on git.
 url: "https://studio.59projects.com"
 baseurl: ""
 
@@ -16,6 +16,7 @@ studio_repo_url: "https://github.com/59-Projects/studio"
 
 exclude:
   - README.md
+  - RELEASING.md
   - Gemfile
   - Gemfile.lock
   - package.json
